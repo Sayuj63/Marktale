@@ -1,0 +1,55 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    z-index: 100;
+    color: white;
+    /* Default initial color */
+    transition: color 0.3s ease;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.workIcon,
+.whatsappIcon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+    /* Inherits from mix-blend-mode */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-content: center;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.workIcon:hover,
+.whatsappIcon:hover {
+    transform: scale(1.1);
+}
+
+.workIcon svg,
+.whatsappIcon svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 20px;
+    }
+}

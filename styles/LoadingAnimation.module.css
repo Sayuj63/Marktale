@@ -1,0 +1,61 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: white;
+}
+
+.brush {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0071CE;
+    clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+}
+
+.textContainer {
+    position: relative;
+    z-index: 10000;
+    mix-blend-mode: difference;
+    color: white;
+    opacity: 0;
+    transform: scale(1.2);
+}
+
+.text {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(3rem, 10vw, 8rem);
+    text-transform: uppercase;
+    letter-spacing: -0.05em;
+    line-height: 1;
+}
+
+.ball {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.yellowBall {
+    background-color: #66B0E0;
+    left: -100px;
+}
+
+.blueBall {
+    background-color: #0071CE;
+    left: -100px;
+}
