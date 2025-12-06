@@ -50,6 +50,21 @@
 
 @media (max-width: 768px) {
     .header {
-        padding: 20px;
+        padding: 15px 20px;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .logo {
+        font-size: 20px;
+        order: 2;
+    }
+
+    .workIcon {
+        order: 1;
+    }
+
+    .whatsappIcon {
+        order: 3;
     }
 }

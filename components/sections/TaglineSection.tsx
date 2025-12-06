@@ -50,18 +50,18 @@ export function TaglineSection() {
         <section
             ref={sectionRef}
             data-theme="light"
-            className="py-20 md:py-32 px-4 md:px-8 bg-[#FFFFFF] text-[#333333] flex justify-center overflow-hidden"
+            className="py-12 md:py-32 px-4 md:px-8 bg-[#FFFFFF] text-[#333333] flex justify-center overflow-hidden"
         >
-            <div className="max-w-7xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="max-w-7xl w-full grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
                 <div className="w-full flex items-center justify-center">
                     <DotLottieReact
                         src="/rocket-man.json"
                         loop
                         autoplay
-                        className="w-full max-w-lg"
+                        className="w-full max-w-[280px] md:max-w-lg"
                     />
                 </div>
-                <div className="flex flex-col items-start gap-3 md:gap-5">
+                <div className="flex flex-col items-start gap-2 md:gap-5">
                     {taglines.map((tagline, index) => (
                         <div
                             key={index}
@@ -70,13 +70,13 @@ export function TaglineSection() {
                             }}
                             className="relative inline-block"
                         >
-                            <h3 className={`text-xl md:text-3xl lg:text-4xl font-semibold tracking-tight leading-snug ${
+                            <h3 className={`text-lg md:text-3xl lg:text-4xl font-semibold tracking-tight leading-snug ${
                                 tagline.style === 'italic-purple' ? 'italic text-[#0071CE]' : 
                                 tagline.style === 'italic-blue' ? 'italic text-[#66B0E0]' : 'text-[#333333]'
                             }`}>
                                 {tagline.text}
                             </h3>
-                            <div className={`underline-element absolute bottom-0 left-0 w-full h-[3px] origin-left scale-x-0 ${
+                            <div className={`underline-element absolute bottom-0 left-0 w-full h-[2px] md:h-[3px] origin-left scale-x-0 ${
                                 tagline.style === 'italic-purple' ? 'bg-[#0071CE]' : 
                                 tagline.style === 'italic-blue' ? 'bg-[#66B0E0]' : 'bg-[#333333]'
                             }`} />

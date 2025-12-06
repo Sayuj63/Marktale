@@ -70,7 +70,7 @@ const LogoCard = ({
 
 export function LogoCarousel() {
     return (
-        <section className="relative py-20 md:py-32 px-4 md:px-8 bg-white overflow-hidden">
+        <section className="relative py-20 md:py-32 px-4 md:px-8 bg-white overflow-hidden max-w-[100vw]">
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 {/* Left Column: Text */}
                 <div className="flex flex-col justify-center">

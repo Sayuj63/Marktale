@@ -5,7 +5,7 @@ import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 
 export function TestimonialsSection() {
   return (
-    <div className="min-h-[30rem] md:min-h-[40rem] flex flex-col antialiased bg-white items-center justify-center relative overflow-hidden py-12 md:py-20">
+    <div className="min-h-[30rem] md:min-h-[40rem] flex flex-col antialiased bg-white items-center justify-center relative overflow-hidden py-12 md:py-20 max-w-[100vw]">
       <div className="w-full text-center mb-8 md:mb-12 px-4">
         <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold text-black mb-2 md:mb-4">
           What Our Clients Say

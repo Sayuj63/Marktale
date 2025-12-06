@@ -93,12 +93,15 @@ export function CardStack() {
         if (!morphingRect) return {};
 
         if (isExpanded) {
+            // Mobile responsive modal
+            const isMobile = window.innerWidth < 768;
             return {
                 left: "50%",
                 top: "50%",
                 transform: "translate(-50%, -50%)",
-                width: "420px",
-                height: "520px",
+                width: isMobile ? "90vw" : "420px",
+                height: isMobile ? "auto" : "520px",
+                maxWidth: isMobile ? "400px" : "420px",
             };
         }
 
@@ -113,14 +116,14 @@ export function CardStack() {
     return (
         <section
             data-theme="light"
-            className="py-20 md:py-32 px-4 md:px-8 bg-white flex flex-col justify-center items-center min-h-screen overflow-hidden"
+            className="py-20 md:py-32 px-4 md:px-8 bg-white flex flex-col justify-center items-center min-h-screen overflow-hidden max-w-[100vw]"
         >
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-16 text-center">
                 Our Projects
             </h2>
             <div
                 ref={stackRef}
-                className={`flex justify-between w-full max-w-6xl perspective-1000 transition-all duration-400 ${morphingCard ? "scale-95 blur-[6px] brightness-90" : ""
+                className={`flex flex-wrap md:flex-nowrap justify-center md:justify-between gap-4 md:gap-0 w-full max-w-6xl perspective-1000 transition-all duration-400 ${morphingCard ? "scale-95 blur-[6px] brightness-90" : ""
                     }`}
                 style={{ perspective: "1000px" }}
             >
@@ -130,7 +133,7 @@ export function CardStack() {
                         ref={(el) => {
                             cardRefs.current[index] = el;
                         }}
-                        className={`w-[180px] h-[240px] bg-white rounded-xl shadow-[0_8px_20px_rgba(0,0,0,0.15)] 
+                        className={`w-[140px] h-[200px] md:w-[180px] md:h-[240px] bg-white rounded-xl shadow-[0_8px_20px_rgba(0,0,0,0.15)] 
                             transition-all duration-[350ms] ease-[cubic-bezier(0.2,0.9,0.2,1)] 
                             relative overflow-hidden cursor-pointer
                             ${morphingCard?.id === card.id ? "invisible" : ""}`}
@@ -156,7 +159,7 @@ export function CardStack() {
                 <div
                     className="fixed bg-white rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.4)] 
                         overflow-hidden z-[999] flex flex-col items-center justify-start 
-                        px-6 py-8 transition-all duration-[600ms] ease-in-out"
+                        px-4 py-6 md:px-6 md:py-8 transition-all duration-[600ms] ease-in-out max-h-[90vh] overflow-y-auto"
                     style={getMorphingStyle()}
                 >
                     <div className={`flex flex-col items-center w-full ${!showDetail ? "hidden" : ""}`}>
@@ -164,14 +167,14 @@ export function CardStack() {
                         <img
                             src={morphingCard.imgUrl}
                             alt={morphingCard.label}
-                            className={`w-full h-[280px] object-cover rounded-xl mx-auto 
+                            className={`w-full h-[200px] md:h-[280px] object-cover rounded-xl mx-auto 
                                 transition-all duration-[600ms] ease-in-out
                                 ${showDetail ? "opacity-100 scale-100 translate-y-0 delay-200" : "opacity-0 scale-90 translate-y-10"}`}
                         />
 
                         {/* Title */}
                         <div
-                            className={`mt-5 text-2xl font-bold text-center transition-all duration-[600ms] ease-in-out
+                            className={`mt-4 md:mt-5 text-xl md:text-2xl font-bold text-center transition-all duration-[600ms] ease-in-out
                                 ${showDetail ? "relative top-auto left-auto transform-none" : "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"}`}
                         >
                             {morphingCard.label}
@@ -182,8 +185,8 @@ export function CardStack() {
                             href={morphingCard.projectLink}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className={`px-6 py-2.5 border-none rounded-lg bg-[#4A90E2] text-white text-base 
-                                cursor-pointer mt-4 transition-all duration-[600ms] ease-in-out hover:bg-[#357ABD]
+                            className={`px-5 py-2 md:px-6 md:py-2.5 border-none rounded-lg bg-[#4A90E2] text-white text-sm md:text-base 
+                                cursor-pointer mt-3 md:mt-4 transition-all duration-[600ms] ease-in-out hover:bg-[#357ABD]
                                 ${showDetail ? "opacity-100 translate-y-0 delay-[800ms]" : "opacity-0 translate-y-5"}`}
                         >
                             View Project
@@ -192,8 +195,8 @@ export function CardStack() {
                         {/* Close Button */}
                         <button
                             onClick={handleClose}
-                            className={`px-6 py-2.5 border-none rounded-lg bg-[#333] text-white text-base 
-                                cursor-pointer mt-3 transition-all duration-[600ms] ease-in-out hover:bg-[#555]
+                            className={`px-5 py-2 md:px-6 md:py-2.5 border-none rounded-lg bg-[#333] text-white text-sm md:text-base 
+                                cursor-pointer mt-2 md:mt-3 transition-all duration-[600ms] ease-in-out hover:bg-[#555]
                                 ${showDetail ? "opacity-100 translate-y-0 delay-[1000ms]" : "opacity-0 translate-y-5"}`}
                         >
                             Close

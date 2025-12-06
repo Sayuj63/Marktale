@@ -54,7 +54,7 @@ export function Hero() {
     return (
         <section
             ref={containerRef}
-            className="relative h-screen w-full overflow-hidden bg-black text-white"
+            className="relative h-[70vh] md:h-screen w-full overflow-hidden bg-black text-white"
             data-theme="dark"
         >
             {/* Background Video */}
@@ -77,18 +77,18 @@ export function Hero() {
             <div className="absolute inset-0 bg-black/40 z-[1]" />
 
             {/* Content */}
-            <div className="relative z-[2] flex h-full flex-col items-center justify-end pb-10 md:pb-20 text-center">
+            <div className="relative z-[2] flex h-full flex-col items-center justify-end pb-8 md:pb-20 text-center">
                 <h1
                     ref={textRef}
-                    className="text-3xl md:text-5xl lg:text-7xl font-bold leading-none tracking-tighter max-w-[90vw] px-4 text-[#ffdd58]"
+                    className="text-2xl md:text-5xl lg:text-7xl font-bold leading-tight md:leading-none tracking-tighter max-w-[90vw] px-4 text-[#ffdd58]"
                 >
                     MarkTaleWorld - <br /> 
-                    <span className="relative inline-block mt-2">
+                    <span className="relative inline-block mt-1 md:mt-2">
                         <span className="absolute -inset-4 border border-[#ffdd58]/60 rounded-[50%] animate-orbit"></span>
                         <span className="italic relative z-10">Powered by Ai</span>
                     </span>
                 </h1>
-                <p className="mt-8 text-xl md:text-2xl font-medium max-w-2xl px-4 text-white">
+                <p className="mt-4 md:mt-8 text-base md:text-2xl font-medium max-w-2xl px-4 text-white">
                     Online Internet Marketing Company That Grows Your Brand
                 </p>
             </div>

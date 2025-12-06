@@ -81,7 +81,7 @@ export function FlowingTextSection() {
         <section
             ref={sectionRef}
             data-theme="light"
-            className="relative h-screen bg-gradient-to-br from-[#0071CE] via-[#66B0E0] to-[#0071CE] overflow-x-hidden z-10"
+            className="relative h-screen bg-gradient-to-br from-[#0071CE] via-[#66B0E0] to-[#0071CE] overflow-x-hidden z-10 max-w-[100vw]"
         >
             <div className="h-full flex items-center overflow-x-hidden">
                 <div
