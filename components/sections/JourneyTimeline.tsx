@@ -116,7 +116,7 @@ export function JourneyTimeline() {
   );
 
   return (
-    <div className="relative w-full overflow-clip bg-black py-12 md:py-20 lg:py-24 pb-20 md:pb-32 lg:pb-40 max-w-[100vw]">
+    <div className="relative w-full bg-black py-12 md:py-20 lg:py-24 pb-20 md:pb-32 lg:pb-40">
       <div className="w-full text-center mb-12 md:mb-20 lg:mb-28 px-4">
         <h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4 md:mb-8">
           Journey From Kautaliya To Mark
@@ -128,7 +128,7 @@ export function JourneyTimeline() {
         {sideContent}
       </div>
       
-      <div className="px-4 md:px-8 lg:px-16">
+      <div className="px-4 md:px-8 lg:px-16 overflow-x-hidden md:overflow-visible">
         <Timeline data={data} sideContent={sideContent} />
       </div>
     </div>

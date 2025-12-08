@@ -16,25 +16,18 @@ export function FlowingTextSection() {
 
         if (!section || !text) return;
 
-        // Split text for bounce animation
-        // We need to dynamically import SplitType or ensure it's available
-        // Since we used it in Hero, it should be installed.
-        // We'll use a dynamic import or assume it's imported at top (need to add import)
         const SplitType = require('split-type').default;
         const split = new SplitType(text.querySelector('h2'), { types: 'chars' });
 
-        // Initial state: Text positioned to the right, only showing first few words
-        // We set x to window.innerWidth - 200px (approx width of "We wanna")
         const startX = window.innerWidth - 250;
 
         gsap.set(text, { x: startX });
 
-        // Create a timeline for both horizontal scroll and entrance animation
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: section,
                 start: "top top",
-                end: "+=5000", // Increased scroll distance for pinning
+                end: "+=5000",
                 scrub: 1,
                 pin: true,
                 pinSpacing: true,
@@ -43,33 +36,26 @@ export function FlowingTextSection() {
         });
 
         // Horizontal scroll animation
-        // Moves text to the left until the end is fully visible
         tl.to(text, {
-            x: () => -(text.scrollWidth - window.innerWidth + 100), // Stop when end is fully visible
+            x: () => -(text.scrollWidth - window.innerWidth + 100),
             ease: "none",
-            duration: 10 // Relative duration for the scroll
+            duration: 10
         });
 
-        // Entrance Bounce Animation (Staggered Pop-in)
-        // As text moves, letters pop in. We sync this with the scroll.
-        // We want the animation to happen as they enter the viewport.
-        // Since we are scrubbing the whole timeline, we can stagger the 'from' state.
-        // However, 'from' animations on a scrubbed timeline can be tricky if not timed right relative to the scroll.
-        // A simpler approach for "entrance" effect on horizontal scroll is to use a separate ScrollTrigger for each char 
-        // OR just animate them all with a stagger that roughly matches their appearance.
-        // Given the "flow" requirement, let's try a staggered animation on the timeline.
-
+        // Bouncy entrance animation for each character
         tl.from(split.chars, {
-            y: 100,
+            y: (i) => (i % 2 === 0 ? -100 : 100), // Alternating from top and bottom
             opacity: 0,
-            rotation: 10,
-            duration: 1,
-            ease: "back.out(1.7)",
+            rotation: (i) => (i % 2 === 0 ? -20 : 20),
+            scale: 0.3,
+            duration: 1.5,
+            ease: "elastic.out(1, 0.5)", // Strong elastic bounce
             stagger: {
-                amount: 8, // Spread the animation over the duration of the scroll
-                from: "start"
+                amount: 7, // Spread across more of the scroll duration
+                from: "start",
+                ease: "power1.inOut"
             }
-        }, "<"); // Start at the same time as the horizontal scroll
+        }, "<"); // Start at the same time as horizontal scroll
 
         return () => {
             ScrollTrigger.getAll().forEach((t) => t.kill());

@@ -2,6 +2,7 @@ import { Hero } from "@/components/HeroSection/HeroSection";
 
 import { FlowingTextSection } from "@/components/sections/FlowingTextSection";
 import { TaglineSection } from "@/components/sections/TaglineSection";
+import { ServicesSection } from "@/components/sections/ServicesSection";
 import { CardStack } from "@/components/sections/CardStack";
 import { TeamPhotos } from "@/components/sections/TeamPhotos";
 import { LogoCarousel } from "@/components/sections/LogoCarousel";
@@ -14,6 +15,7 @@ export default function Home() {
       <Hero />
       <FlowingTextSection />
       <TaglineSection />
+      <ServicesSection />
       <CardStack />
       <JourneyTimeline />
       <TeamPhotos />
