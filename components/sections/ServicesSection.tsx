@@ -7,44 +7,91 @@ interface ServiceData {
     title: string;
     description: string;
     icon: string;
+    details: string[];
 }
 
 const servicesData: ServiceData[] = [
     { 
         id: 1, 
-        title: "SEO Optimization", 
-        description: "Boost your search rankings with data-driven SEO strategies that drive organic traffic and increase visibility.",
-        icon: "🔍"
+        title: "App Development", 
+        description: "Build powerful mobile applications that deliver exceptional user experiences across iOS and Android platforms.",
+        icon: "📱",
+        details: [
+            "Frontend: Flutter, React Native, Swift, Kotlin",
+            "Backend: Node.js, Express, Firebase",
+            "Database: MongoDB, PostgreSQL, Firebase Firestore",
+            "APIs: RESTful, GraphQL",
+            "Cloud: AWS, Google Cloud, Azure"
+        ]
     },
     { 
         id: 2, 
-        title: "Social Media Marketing", 
-        description: "Engage your audience across platforms with compelling content and strategic campaigns that build brand loyalty.",
-        icon: "📱"
+        title: "Web Development", 
+        description: "Create stunning, responsive websites and web applications that drive engagement and conversions.",
+        icon: "💻",
+        details: [
+            "Frontend: React, Next.js, Vue.js, TypeScript",
+            "Backend: Node.js, Express, Python, Django",
+            "Database: PostgreSQL, MySQL, MongoDB",
+            "CMS: WordPress, Strapi, Contentful",
+            "Hosting: Vercel, AWS, Netlify"
+        ]
     },
     { 
         id: 3, 
-        title: "Content Creation", 
-        description: "Tell your brand story with high-quality content that resonates with your audience and drives conversions.",
-        icon: "✍️"
+        title: "SaaS Solutions", 
+        description: "Develop scalable Software-as-a-Service platforms that solve real business problems and generate recurring revenue.",
+        icon: "☁️",
+        details: [
+            "Architecture: Microservices, Serverless",
+            "Frontend: React, Next.js, Tailwind CSS",
+            "Backend: Node.js, Python, Go",
+            "Database: PostgreSQL, Redis, Elasticsearch",
+            "Payment: Stripe, PayPal, Razorpay",
+            "Analytics: Mixpanel, Amplitude"
+        ]
     },
     { 
         id: 4, 
-        title: "PPC Advertising", 
-        description: "Maximize ROI with targeted pay-per-click campaigns that reach the right audience at the right time.",
-        icon: "💰"
+        title: "Digital Marketing", 
+        description: "Maximize ROI with data-driven digital marketing strategies powered by AI and advanced analytics.",
+        icon: "📊",
+        details: [
+            "SEO: On-page, Off-page, Technical SEO",
+            "PPC: Google Ads, Facebook Ads, LinkedIn Ads",
+            "Social Media: Content Strategy, Community Management",
+            "Email Marketing: Automation, Segmentation",
+            "Analytics: Google Analytics, Tag Manager",
+            "AI Tools: ChatGPT, Jasper, Midjourney"
+        ]
     },
     { 
         id: 5, 
         title: "Brand Strategy", 
         description: "Build a powerful brand identity that stands out in the market and connects with your target audience.",
-        icon: "🎯"
+        icon: "🎯",
+        details: [
+            "Brand Identity: Logo, Color Palette, Typography",
+            "Brand Guidelines: Voice, Tone, Messaging",
+            "Market Research: Competitor Analysis, Positioning",
+            "Content Strategy: Storytelling, Value Proposition",
+            "Design: Figma, Adobe Creative Suite",
+            "AI Design: Midjourney, DALL-E, Stable Diffusion"
+        ]
     },
     { 
         id: 6, 
-        title: "Analytics & Insights", 
-        description: "Make informed decisions with comprehensive analytics and actionable insights that drive growth.",
-        icon: "📊"
+        title: "AI Integration", 
+        description: "Leverage cutting-edge AI technologies to automate processes and enhance user experiences.",
+        icon: "🤖",
+        details: [
+            "AI Models: OpenAI GPT, Claude, Gemini",
+            "Machine Learning: TensorFlow, PyTorch",
+            "Chatbots: Custom AI Assistants, RAG Systems",
+            "Automation: Zapier, Make, n8n",
+            "Computer Vision: Image Recognition, OCR",
+            "NLP: Sentiment Analysis, Text Generation"
+        ]
     },
 ];
 
@@ -67,6 +114,17 @@ export function ServicesSection() {
     };
 
     const getCardStyle = (index: number) => {
+        const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+        
+        // No rotation on mobile
+        if (isMobile) {
+            return {
+                transform: 'rotate(0deg)',
+                zIndex: expandedCard === index ? 20 : 1,
+            };
+        }
+
+        // Desktop: keep original slanted effect
         const baseRotations = [-8, -4, 0, 4, 8, 12];
         const rotation = baseRotations[index] || 0;
 
@@ -96,7 +154,7 @@ export function ServicesSection() {
                 Our Services
             </h2>
             <p className="text-lg md:text-xl text-gray-600 mb-16 text-center max-w-2xl">
-                Comprehensive digital marketing solutions powered by AI to grow your brand
+                Tech & Digital Marketing Solutions Powered by AI
             </p>
             
             <div
@@ -118,11 +176,11 @@ export function ServicesSection() {
                         <div className="p-4 md:p-5 h-full flex flex-col items-center justify-center text-center">
                             <div className="text-4xl md:text-5xl mb-3 md:mb-4">{service.icon}</div>
                             <h3 className="text-sm md:text-base font-bold text-black mb-2">{service.title}</h3>
-                            <p className={`text-xs text-gray-600 transition-all duration-300 ${
-                                expandedCard === index ? 'opacity-100 max-h-40' : 'opacity-0 max-h-0 overflow-hidden'
-                            }`}>
-                                {service.description}
-                            </p>
+                            {expandedCard !== index && (
+                                <p className="text-xs text-gray-600">
+                                    Click to see details
+                                </p>
+                            )}
                         </div>
                         
                         {/* Gradient overlay on hover */}
@@ -132,10 +190,41 @@ export function ServicesSection() {
             </div>
 
             {expandedCard !== null && (
-                <div className="mt-8 max-w-2xl text-center">
+                <div className="mt-12 max-w-4xl w-full bg-white rounded-2xl shadow-2xl p-6 md:p-8 border-2 border-[#1a8dcc]">
+                    <div className="flex items-center justify-between mb-6">
+                        <div className="flex items-center gap-4">
+                            <span className="text-5xl">{servicesData[expandedCard].icon}</span>
+                            <h3 className="text-2xl md:text-3xl font-bold text-black">
+                                {servicesData[expandedCard].title}
+                            </h3>
+                        </div>
+                        <button
+                            onClick={() => setExpandedCard(null)}
+                            className="text-gray-500 hover:text-black transition-colors text-2xl"
+                        >
+                            ✕
+                        </button>
+                    </div>
+                    
+                    <p className="text-gray-700 mb-6 text-base md:text-lg">
+                        {servicesData[expandedCard].description}
+                    </p>
+                    
+                    <div className="space-y-3">
+                        <h4 className="text-lg font-semibold text-[#1a8dcc] mb-4">Technologies & Tools:</h4>
+                        <ul className="space-y-2">
+                            {servicesData[expandedCard].details.map((detail, idx) => (
+                                <li key={idx} className="flex items-start gap-3 text-gray-700">
+                                    <span className="text-[#1a8dcc] mt-1">▸</span>
+                                    <span className="text-sm md:text-base">{detail}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                    
                     <button
                         onClick={() => setExpandedCard(null)}
-                        className="px-6 py-2.5 bg-[#1a8dcc] text-white rounded-lg hover:bg-[#157ab8] transition-colors"
+                        className="mt-6 w-full md:w-auto px-8 py-3 bg-[#1a8dcc] text-white rounded-lg hover:bg-[#157ab8] transition-colors font-semibold"
                     >
                         Close Details
                     </button>

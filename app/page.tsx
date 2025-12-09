@@ -4,6 +4,7 @@ import { FlowingTextSection } from "@/components/sections/FlowingTextSection";
 import { TaglineSection } from "@/components/sections/TaglineSection";
 import { ServicesSection } from "@/components/sections/ServicesSection";
 import { CardStack } from "@/components/sections/CardStack";
+import { ClientsScrollStack } from "@/components/sections/ClientsScrollStack";
 import { TeamPhotos } from "@/components/sections/TeamPhotos";
 import { LogoCarousel } from "@/components/sections/LogoCarousel";
 import { JourneyTimeline } from "@/components/sections/JourneyTimeline";
@@ -17,6 +18,7 @@ export default function Home() {
       <TaglineSection />
       <ServicesSection />
       <CardStack />
+      <ClientsScrollStack />
       <JourneyTimeline />
       <TeamPhotos />
       <LogoCarousel />

@@ -53,16 +53,42 @@
     margin: 20px 0;
 }
 
-.desktopLink {
-    display: block;
+.phoneSection {
     text-align: center;
-    color: #000;
-    text-decoration: underline;
-    font-weight: 600;
-    padding: 12px;
+    margin: 20px 0;
+}
+
+.phoneLabel {
+    font-size: 14px;
+    color: #666;
+    margin: 0 0 8px 0;
+}
+
+.phoneNumber {
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    color: #25D366;
+    text-decoration: none;
     transition: color 0.3s ease;
 }
 
+.phoneNumber:hover {
+    color: #128C7E;
+}
+
+.desktopLink {
+    display: block;
+    text-align: center;
+    color: #fff;
+    background: #25D366;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 12px 24px;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+}
+
 .desktopLink:hover {
-    color: #666;
+    background: #128C7E;
 }

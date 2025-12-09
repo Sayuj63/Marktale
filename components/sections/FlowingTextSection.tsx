@@ -23,11 +23,14 @@ export function FlowingTextSection() {
 
         gsap.set(text, { x: startX });
 
+        // Detect mobile
+        const isMobile = window.innerWidth < 768;
+        
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: section,
                 start: "top top",
-                end: "+=5000",
+                end: isMobile ? "+=2000" : "+=5000", // Shorter scroll distance on mobile
                 scrub: 1,
                 pin: true,
                 pinSpacing: true,
@@ -39,7 +42,7 @@ export function FlowingTextSection() {
         tl.to(text, {
             x: () => -(text.scrollWidth - window.innerWidth + 100),
             ease: "none",
-            duration: 10
+            duration: isMobile ? 5 : 10 // Faster on mobile
         });
 
         // Bouncy entrance animation for each character
@@ -48,10 +51,10 @@ export function FlowingTextSection() {
             opacity: 0,
             rotation: (i) => (i % 2 === 0 ? -20 : 20),
             scale: 0.3,
-            duration: 1.5,
+            duration: isMobile ? 0.8 : 1.5, // Faster animation on mobile
             ease: "elastic.out(1, 0.5)", // Strong elastic bounce
             stagger: {
-                amount: 7, // Spread across more of the scroll duration
+                amount: isMobile ? 3 : 7, // Less stagger on mobile for quicker animation
                 from: "start",
                 ease: "power1.inOut"
             }

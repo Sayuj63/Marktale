@@ -69,6 +69,17 @@ export function CardStack() {
     };
 
     const getCardStyle = (index: number) => {
+        const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+        
+        // No rotation on mobile
+        if (isMobile) {
+            return {
+                transform: 'rotate(0deg)',
+                zIndex: 1,
+            };
+        }
+
+        // Desktop: keep original slanted effect
         const baseRotations = [-10, -5, 0, 5, 10];
         const rotation = baseRotations[index] || 0;
 

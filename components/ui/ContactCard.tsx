@@ -6,7 +6,7 @@ export function ContactCard() {
     return (
         <div className="fixed bottom-8 right-8 z-40">
             <a
-                href="https://wa.me/1234567890"
+                href="https://wa.me/918587870707"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 bg-[#25D366] text-white px-6 py-4 rounded-full shadow-lg hover:scale-105 transition-transform duration-300"
