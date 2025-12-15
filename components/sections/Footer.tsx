@@ -27,6 +27,9 @@ export function Footer() {
                     <Link href="https://www.youtube.com/@MarkTaleWorld/featured" target="_blank" rel="noopener noreferrer" className="text-sm font-medium uppercase tracking-wide hover:text-gray-300 transition-colors">
                         YouTube
                     </Link>
+                    <Link href="https://www.instagram.com/marktaleworld/" target="_blank" rel="noopener noreferrer" className="text-sm font-medium uppercase tracking-wide hover:text-gray-300 transition-colors">
+                        Instagram
+                    </Link>
                 </nav>
             </div>
         </footer>
