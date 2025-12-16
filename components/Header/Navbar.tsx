@@ -83,15 +83,15 @@ export function Navbar() {
 
             {/* Mobile Menu */}
             {mobileMenuOpen && (
-                <div className="absolute top-full mt-2 left-0 w-full bg-black/90 backdrop-blur-xl rounded-2xl border border-white/10 p-6 flex flex-col gap-4 md:hidden">
+                <div className="absolute top-[120%] left-0 w-full bg-[#050505] border border-white/10 rounded-2xl p-6 flex flex-col gap-4 md:hidden shadow-2xl z-[200]">
                     {navItems.map((item) => (
                         <Link
                             key={item.href}
                             href={item.href}
                             onClick={() => setMobileMenuOpen(false)}
                             className={cn(
-                                "text-lg font-medium transition-colors hover:text-[#1a8dcc]",
-                                pathname === item.href ? "text-[#1a8dcc]" : "text-white/80"
+                                "text-lg font-medium transition-colors block py-2",
+                                pathname === item.href ? "text-[#1a8dcc]" : "text-white"
                             )}
                         >
                             {item.name}
@@ -100,7 +100,7 @@ export function Navbar() {
                     <Link
                         href="/contact"
                         onClick={() => setMobileMenuOpen(false)}
-                        className="mt-2 text-center px-5 py-3 rounded-xl bg-white text-black font-bold hover:bg-[#ffdd58] transition-colors"
+                        className="mt-2 text-center px-5 py-4 rounded-xl bg-white text-black font-bold hover:bg-[#ffdd58] transition-colors"
                     >
                         Let's Talk
                     </Link>
