@@ -15,6 +15,18 @@ export function TestimonialsSection() {
         </p>
       </div>
       <InfiniteMovingCards items={testimonials} direction="right" speed="slow" />
+
+      <div className="mt-8 z-10">
+        <a
+          href="https://g.page/r/YOUR_GMB_LINK"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 px-6 py-3 bg-white border border-gray-200 rounded-full shadow-sm hover:shadow-md transition-all text-sm font-bold text-gray-800"
+        >
+          <span className="text-xl">⭐</span>
+          Leave a Google Review
+        </a>
+      </div>
     </div>
   );
 }
@@ -22,31 +34,27 @@ export function TestimonialsSection() {
 const testimonials = [
   {
     quote:
-      "It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, it was the epoch of belief, it was the epoch of incredulity, it was the season of Light, it was the season of Darkness, it was the spring of hope, it was the winter of despair.",
-    name: "Charles Dickens",
-    title: "A Tale of Two Cities",
+      "They think like founders, not vendors. The team aligned perfectly with our vision and executed with precision.",
+    name: "Founder",
+    title: "Stealth Startup",
   },
   {
     quote:
-      "To be, or not to be, that is the question: Whether 'tis nobler in the mind to suffer The slings and arrows of outrageous fortune, Or to take Arms against a Sea of troubles, And by opposing end them: to die, to sleep.",
-    name: "William Shakespeare",
-    title: "Hamlet",
+      "Fast execution and transparent communication. We scaled our operations significantly within months of working with MarkTale.",
+    name: "Director",
+    title: "Retail Brand",
   },
   {
-    quote: "All that we see or seem is but a dream within a dream.",
-    name: "Edgar Allan Poe",
-    title: "A Dream Within a Dream",
+    quote: "Their AI-driven approach gave us a competitive edge we didn't know we needed.",
+    name: "CEO",
+    title: "Tech Solutions",
   },
   {
-    quote:
-      "It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.",
-    name: "Jane Austen",
-    title: "Pride and Prejudice",
-  },
-  {
-    quote:
-      "Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world.",
-    name: "Herman Melville",
-    title: "Moby-Dick",
+    quote: "A true growth partner. From branding to tech, they handled everything seamlessly.",
+    name: "Marketing Head",
+    title: "DTC Brand",
   },
 ];
+
+// Note: Function component logic for CTA button will be handled in the main return if not present in InfiniteMovingCards.
+// Adding a CTA below the cards in the main component.

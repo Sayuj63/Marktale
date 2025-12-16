@@ -4,7 +4,7 @@ import { Montserrat, Poppins } from "next/font/google";
 import "@/styles/globals.css";
 import { SmoothScroll } from "@/components/ui/SmoothScroll";
 import { CustomCursor } from "@/components/ui/CustomCursor";
-import { Header } from "@/components/Header/Header";
+import { Navbar } from "@/components/Header/Navbar";
 import { ContactCard } from "@/components/ui/ContactCard";
 import { Footer } from "@/components/sections/Footer";
 import { LoadingAnimation } from "@/components/LoadingAnimation/LoadingAnimation";
@@ -65,7 +65,7 @@ export default function RootLayout({
       <body className={poppins.className}>
         <LoadingAnimation />
         <CustomCursor />
-        <Header />
+        <Navbar />
         <SmoothScroll>
           {children}
           <ContactCard />
