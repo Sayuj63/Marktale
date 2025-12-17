@@ -35,18 +35,21 @@ const stories = [
 
 export function SuccessStories() {
     return (
-        <section className="py-20 bg-white overflow-hidden">
+        <section className="py-20 bg-white">
             <div className="container mx-auto px-4 md:px-8">
-                <div className="mb-12 text-center md:text-left">
+                {/* Header Section */}
+                <div className="mb-12 text-center md:text-left max-w-2xl mx-auto md:mx-0 px-4">
                     <h2 className="text-3xl md:text-5xl font-bold text-black mb-4">
                         Real Brands. Real Results.
                     </h2>
-                    <p className="text-gray-600 text-lg max-w-2xl">
+                    <p className="text-gray-600 text-lg md:text-xl leading-relaxed break-words w-full">
                         From idea to execution — we don’t market brands, we build them.
                     </p>
                 </div>
 
-                <div className="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory scrollbar-hide">
+                {/* Scrollable Stories Container */}
+                {/* Mobile: Full width cards */}
+                <div className="flex overflow-x-auto gap-4 pb-8 -mx-4 px-4 md:mx-0 md:px-0 snap-x snap-mandatory scrollbar-hide">
                     {stories.map((story, index) => (
                         <motion.div
                             key={index}
@@ -54,7 +57,7 @@ export function SuccessStories() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
-                            className="min-w-[300px] md:min-w-[400px] bg-gray-50 rounded-2xl overflow-hidden snap-center hover:shadow-xl transition-shadow border border-gray-100"
+                            className="min-w-full md:min-w-[400px] bg-gray-50 rounded-2xl overflow-hidden snap-center hover:shadow-xl transition-shadow border border-gray-100 flex-shrink-0"
                         >
                             <div className="h-48 bg-gray-200 w-full relative">
                                 {/* Placeholder for actual image */}

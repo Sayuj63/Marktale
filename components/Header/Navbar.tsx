@@ -81,16 +81,23 @@ export function Navbar() {
                 </div>
             </div>
 
-            {/* Mobile Menu */}
+            {/* Mobile Menu Overlay */}
             {mobileMenuOpen && (
-                <div className="absolute top-[120%] left-0 w-full bg-[#050505] border border-white/10 rounded-2xl p-6 flex flex-col gap-4 md:hidden shadow-2xl z-[200]">
+                <div className="fixed inset-0 z-[200] bg-black flex flex-col items-center justify-center gap-8 md:hidden transition-all duration-300">
+                    <button
+                        className="absolute top-8 right-8 text-white p-2"
+                        onClick={() => setMobileMenuOpen(false)}
+                    >
+                        <X size={32} />
+                    </button>
+
                     {navItems.map((item) => (
                         <Link
                             key={item.href}
                             href={item.href}
                             onClick={() => setMobileMenuOpen(false)}
                             className={cn(
-                                "text-lg font-medium transition-colors block py-2",
+                                "text-2xl font-bold transition-colors",
                                 pathname === item.href ? "text-[#1a8dcc]" : "text-white"
                             )}
                         >
@@ -100,7 +107,7 @@ export function Navbar() {
                     <Link
                         href="/contact"
                         onClick={() => setMobileMenuOpen(false)}
-                        className="mt-2 text-center px-5 py-4 rounded-xl bg-white text-black font-bold hover:bg-[#ffdd58] transition-colors"
+                        className="mt-4 px-8 py-4 rounded-full bg-white text-black text-lg font-bold hover:bg-[#ffdd58] transition-colors"
                     >
                         Let's Talk
                     </Link>
