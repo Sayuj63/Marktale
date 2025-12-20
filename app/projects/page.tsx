@@ -1,6 +1,6 @@
 "use client";
 
-import { SuccessStories } from "@/components/sections/SuccessStories";
+import { BrandSpotlight } from "@/components/sections/BrandSpotlight";
 import { CardStack } from "@/components/sections/CardStack";
 import { ClientsScrollStack } from "@/components/sections/ClientsScrollStack";
 import { LogoCarousel } from "@/components/sections/LogoCarousel";
@@ -15,7 +15,42 @@ export default function ProjectsPage() {
                 </p>
             </div>
 
-            <SuccessStories />
+            {/* Featured Brand Spotlights */}
+            <BrandSpotlight
+                brandName="Delhi059"
+                tagline="From Zero to Canada's Culinary Icon"
+                launchDate="Launched October 17, 2024"
+                description="Built from absolute zero into Windsor's standout success story with 650+ Google reviews—all without spending a rupee on performance marketing."
+                stats={[
+                    { label: "Google Reviews", value: "650+", iconName: "Star" },
+                    { label: "Ad Spend", value: "$0", iconName: "CheckCircle2" },
+                ]}
+                themeColor="#000000"
+                link="https://www.delhi059.ca"
+                align="left"
+                gradientFrom="#000000"
+                gradientTo="#1a1a1a"
+                accentColor="#d4af37"
+            />
+
+            <BrandSpotlight
+                brandName="Local Ride"
+                tagline="The Rideshare Revolution"
+                description="Engineered from the ground up into a thriving Canadian rideshare powerhouse. Full-stack iOS/Android apps with zero commission for drivers."
+                stats={[
+                    { label: "Commission", value: "0%", iconName: "CheckCircle2" },
+                    { label: "Platform", value: "iOS/Android", iconName: "Smartphone" },
+                ]}
+                themeColor="#0ea5e9"
+                link="https://localride.co"
+                align="right"
+                gradientFrom="#0ea5e9"
+                gradientTo="#0284c7"
+                accentColor="#38bdf8"
+            />
+
+
+
             <CardStack />
             <LogoCarousel />
             <div className="bg-neutral-50 py-20">

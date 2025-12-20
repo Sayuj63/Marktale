@@ -65,13 +65,15 @@ body {
 }
 
 @media (max-width: 768px) {
-  body, html {
+
+  body,
+  html {
     overflow-x: hidden !important;
     max-width: 100vw !important;
     position: relative;
   }
-  
-  body > * {
+
+  body>* {
     max-width: 100vw;
     overflow-x: hidden;
   }
@@ -176,6 +178,7 @@ body.custom-cursor-active .custom-cursor-element {
   from {
     transform: translateX(0);
   }
+
   to {
     transform: translateX(-50%);
   }
@@ -183,4 +186,13 @@ body.custom-cursor-active .custom-cursor-element {
 
 .animate-scroll {
   animation: scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite;
+}
+
+/* Pixelated Grid for Brand Spotlight */
+.grid-rows-20 {
+  grid-template-rows: repeat(20, minmax(0, 1fr));
+}
+
+.grid-cols-20 {
+  grid-template-columns: repeat(20, minmax(0, 1fr));
 }
