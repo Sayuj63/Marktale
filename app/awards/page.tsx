@@ -1,8 +1,9 @@
 "use client";
 
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
-import { Award, Briefcase, Camera, Mic, Rocket, TrendingUp, Users } from "lucide-react";
+import { Briefcase, Camera, Mic, Rocket, TrendingUp, Users } from "lucide-react";
 
+// Keeping only 6 items to match "3 rows of 2 each" request
 const achievements = [
     {
         title: "Founder & Scaler",
@@ -40,12 +41,12 @@ const achievements = [
         icon: Camera,
         color: "bg-yellow-500",
     },
-    {
-        title: "Theatre & Performance",
-        description: "Represented Delhi at the national level as a theatre actor, demonstrating recognized performance skills and national-level visibility.",
-        icon: Mic,
-        color: "bg-pink-500",
-    },
+    // {
+    //     title: "Theatre & Performance",
+    //     description: "Represented Delhi at the national level as a theatre actor, demonstrating recognized performance skills and national-level visibility.",
+    //     icon: Mic,
+    //     color: "bg-pink-500",
+    // },
 ];
 
 export default function AwardsPage() {
@@ -59,45 +60,46 @@ export default function AwardsPage() {
             </div>
 
             <div className="container mx-auto px-4 py-20">
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto h-full">
+                <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
                     {achievements.map((item, index) => (
-                        <CardContainer key={index} containerClassName="h-full py-4" className="inter-var w-full h-full">
-                            <CardBody className="bg-white relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full h-full rounded-xl p-6 border flex flex-col justify-between">
-                                <div className="flex flex-col flex-grow">
-                                    <CardItem
-                                        translateZ="50"
-                                        className="text-xl font-bold text-neutral-600 dark:text-white mb-2"
-                                    >
-                                        {item.title}
-                                    </CardItem>
-
-                                    <CardItem
-                                        as="p"
-                                        translateZ="60"
-                                        className="text-neutral-500 text-sm mt-2 dark:text-neutral-300 flex-grow"
-                                    >
-                                        {item.description}
-                                    </CardItem>
-                                </div>
-
-                                <div className="mt-auto">
-                                    <CardItem translateZ="100" className="w-full mt-6">
-                                        <div className={`h-40 w-full relative rounded-xl overflow-hidden group-hover/card:shadow-xl flex items-center justify-center ${item.color} bg-opacity-10`}>
-                                            <div className={`p-4 rounded-full ${item.color} text-white`}>
-                                                <item.icon className="w-12 h-12" />
-                                            </div>
+                        <CardContainer key={index} className="inter-var w-full">
+                            <CardBody className="bg-white relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full h-auto rounded-xl p-6 border flex flex-col h-full">
+                                <CardItem
+                                    translateZ="50"
+                                    className="text-xl font-bold text-neutral-600 dark:text-white"
+                                >
+                                    {item.title}
+                                </CardItem>
+                                <CardItem
+                                    as="p"
+                                    translateZ="60"
+                                    className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300 flex-grow"
+                                >
+                                    {item.description}
+                                </CardItem>
+                                <CardItem translateZ="100" className="w-full mt-4">
+                                    <div className={`h-60 w-full relative rounded-xl overflow-hidden group-hover/card:shadow-xl flex items-center justify-center ${item.color} bg-opacity-10`}>
+                                        <div className={`p-4 rounded-full ${item.color} text-white`}>
+                                            <item.icon className="w-12 h-12" />
                                         </div>
-                                    </CardItem>
-
-                                    <div className="flex justify-between items-center mt-8">
-                                        <CardItem
-                                            translateZ={20}
-                                            as="div"
-                                            className="px-4 py-2 rounded-xl text-xs font-normal dark:text-white"
-                                        >
-                                            Recognized Excellence
-                                        </CardItem>
                                     </div>
+                                </CardItem>
+
+                                <div className="flex justify-between items-center mt-8">
+                                    <CardItem
+                                        translateZ={20}
+                                        as="div"
+                                        className="px-4 py-2 rounded-xl text-xs font-normal dark:text-white"
+                                    >
+                                        Recognized Excellence
+                                    </CardItem>
+                                    <CardItem
+                                        translateZ={20}
+                                        as="button"
+                                        className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold"
+                                    >
+                                        View Details
+                                    </CardItem>
                                 </div>
                             </CardBody>
                         </CardContainer>

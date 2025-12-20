@@ -15,15 +15,60 @@ interface ClientCard {
 const clientsData: ClientCard[] = [
     {
         id: 1,
-        name: "ACR Automobiles",
-        industry: "Automotive",
-        description: "Revolutionizing the automotive retail experience with digital-first strategies and AI-powered customer engagement.",
-        image: "/clients/automobile_acr.png",
+        name: "Dee Cee Accessories",
+        industry: "Jewelry",
+        description: "Digital setup from scratch. Products photography, SEO based listings on Amazon and Flipkart. Digital Social Media Accounts setup and management.",
+        image: "/clients/jewelry_deecee.png",
+        bgColor: "#d4af37",
+        textColor: "#000000"
+    },
+    {
+        id: 2,
+        name: "Last Mile Care",
+        industry: "NGO",
+        description: "Supporting communities with compassionate care and digital outreach strategies to amplify their mission.",
+        image: "/clients/ngo_lastmilecare.png",
         bgColor: "#1a8dcc",
         textColor: "#ffffff"
     },
     {
-        id: 2,
+        id: 3,
+        name: "Maggo Play School",
+        industry: "Education",
+        description: "Creating joyful learning experiences for young minds in Delhi with innovative digital engagement.",
+        image: "/clients/school_maggoplay.png",
+        bgColor: "#66B0E0",
+        textColor: "#000000"
+    },
+    {
+        id: 4,
+        name: "BG Foundation",
+        industry: "NGO - Canada",
+        description: "Empowering change through digital transformation and community engagement initiatives across Canada.",
+        image: "/clients/ngo_bgfoundation.png",
+        bgColor: "#c41e3a",
+        textColor: "#ffffff"
+    },
+    {
+        id: 5,
+        name: "BG Foods",
+        industry: "E-commerce - Canada/USA",
+        description: "Everything from scratch. Building a thriving food e-commerce platform across North America.",
+        image: "/clients/ecommerce_bgfoods.png",
+        bgColor: "#27ae60",
+        textColor: "#ffffff"
+    },
+    {
+        id: 6,
+        name: "Promac Advisory",
+        industry: "Real Estate - Jaipur",
+        description: "Transforming real estate advisory with data-driven insights and premium digital presence.",
+        image: "/clients/realestate_promac.png",
+        bgColor: "#2c3e50",
+        textColor: "#ffffff"
+    },
+    {
+        id: 7,
         name: "CabTale",
         industry: "Transportation",
         description: "Building the future of urban mobility with seamless booking experiences and real-time tracking solutions.",
@@ -32,7 +77,16 @@ const clientsData: ClientCard[] = [
         textColor: "#000000"
     },
     {
-        id: 3,
+        id: 8,
+        name: "Astro Nexus",
+        industry: "Astrology",
+        description: "Bridging ancient wisdom with modern technology through engaging digital astrology experiences.",
+        image: "/clients/astrology_astronexus.png",
+        bgColor: "#8e44ad",
+        textColor: "#ffffff"
+    },
+    {
+        id: 9,
         name: "Biryani Bar",
         industry: "Hospitality",
         description: "Crafting memorable dining experiences through innovative digital ordering and customer loyalty programs.",
@@ -41,13 +95,31 @@ const clientsData: ClientCard[] = [
         textColor: "#ffffff"
     },
     {
-        id: 4,
-        name: "Maggo Kids",
+        id: 10,
+        name: "Building Tale",
+        industry: "Real Estate - Delhi",
+        description: "Crafting compelling property narratives and digital marketing strategies in the heart of New Delhi.",
+        image: "/clients/realestate_buildingtale.png",
+        bgColor: "#e67e22",
+        textColor: "#ffffff"
+    },
+    {
+        id: 11,
+        name: "Read Abroad",
         industry: "Education",
-        description: "Empowering young minds with engaging educational platforms and interactive learning experiences.",
-        image: "/clients/school1_maggokids.png",
-        bgColor: "#66B0E0",
-        textColor: "#000000"
+        description: "Connecting students with global educational opportunities through innovative digital platforms.",
+        image: "/clients/education_readabroad.png",
+        bgColor: "#3498db",
+        textColor: "#ffffff"
+    },
+    {
+        id: 12,
+        name: "Writing Rodgers",
+        industry: "Education",
+        description: "Empowering writers and educators with comprehensive digital tools and content strategies.",
+        image: "/clients/education_writingrodgers.png",
+        bgColor: "#16a085",
+        textColor: "#ffffff"
     }
 ];
 
@@ -137,7 +209,7 @@ export function ClientsScrollStack() {
 
     useLayoutEffect(() => {
         if (typeof window === 'undefined') return;
-        
+
         const cards = Array.from(document.querySelectorAll('.client-stack-card')) as HTMLDivElement[];
         cardsRef.current = cards;
 
@@ -251,7 +323,7 @@ export function ClientsScrollStack() {
                             />
                         </div>
                     ))}
-                    
+
                     {/* Spacer for scroll release */}
                     <div className="scroll-stack-end h-[50vh]" />
                 </div>
