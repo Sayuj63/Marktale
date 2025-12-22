@@ -18,7 +18,7 @@ const clientsData: ClientCard[] = [
         name: "Dee Cee Accessories",
         industry: "Jewelry",
         description: "Digital setup from scratch. Products photography, SEO based listings on Amazon and Flipkart. Digital Social Media Accounts setup and management.",
-        image: "/clients/jewelry_deecee.png",
+        image: "/clients/deeceeacceserioes.png",
         bgColor: "#d4af37",
         textColor: "#000000"
     },
@@ -27,7 +27,7 @@ const clientsData: ClientCard[] = [
         name: "Last Mile Care",
         industry: "NGO",
         description: "Supporting communities with compassionate care and digital outreach strategies to amplify their mission.",
-        image: "/clients/ngo_lastmilecare.png",
+        image: "/clients/lastmilecare.png",
         bgColor: "#1a8dcc",
         textColor: "#ffffff"
     },
@@ -36,7 +36,7 @@ const clientsData: ClientCard[] = [
         name: "Maggo Play School",
         industry: "Education",
         description: "Creating joyful learning experiences for young minds in Delhi with innovative digital engagement.",
-        image: "/clients/school_maggoplay.png",
+        image: "/clients/school1_maggokids.png",
         bgColor: "#66B0E0",
         textColor: "#000000"
     },
@@ -45,7 +45,7 @@ const clientsData: ClientCard[] = [
         name: "BG Foundation",
         industry: "NGO - Canada",
         description: "Empowering change through digital transformation and community engagement initiatives across Canada.",
-        image: "/clients/ngo_bgfoundation.png",
+        image: "/clients/bgfoundation.png",
         bgColor: "#c41e3a",
         textColor: "#ffffff"
     },
@@ -54,7 +54,7 @@ const clientsData: ClientCard[] = [
         name: "BG Foods",
         industry: "E-commerce - Canada/USA",
         description: "Everything from scratch. Building a thriving food e-commerce platform across North America.",
-        image: "/clients/ecommerce_bgfoods.png",
+        image: "/clients/bgfoods.png",
         bgColor: "#27ae60",
         textColor: "#ffffff"
     },
@@ -63,7 +63,7 @@ const clientsData: ClientCard[] = [
         name: "Promac Advisory",
         industry: "Real Estate - Jaipur",
         description: "Transforming real estate advisory with data-driven insights and premium digital presence.",
-        image: "/clients/realestate_promac.png",
+        image: "/clients/promac.png",
         bgColor: "#2c3e50",
         textColor: "#ffffff"
     },
@@ -81,7 +81,7 @@ const clientsData: ClientCard[] = [
         name: "Astro Nexus",
         industry: "Astrology",
         description: "Bridging ancient wisdom with modern technology through engaging digital astrology experiences.",
-        image: "/clients/astrology_astronexus.png",
+        image: "/clients/astronexus.png",
         bgColor: "#8e44ad",
         textColor: "#ffffff"
     },
@@ -96,19 +96,19 @@ const clientsData: ClientCard[] = [
     },
     {
         id: 10,
-        name: "Building Tale",
-        industry: "Real Estate - Delhi",
-        description: "Crafting compelling property narratives and digital marketing strategies in the heart of New Delhi.",
-        image: "/clients/realestate_buildingtale.png",
-        bgColor: "#e67e22",
-        textColor: "#ffffff"
+        name: "Delhi059",
+        industry: "Restaurant - Canada",
+        description: "From zero to Canada's culinary icon with 650+ Google reviews—all without spending a rupee on performance marketing.",
+        image: "/clients/delho059.png",
+        bgColor: "#000000",
+        textColor: "#d4af37"
     },
     {
         id: 11,
         name: "Read Abroad",
         industry: "Education",
         description: "Connecting students with global educational opportunities through innovative digital platforms.",
-        image: "/clients/education_readabroad.png",
+        image: "/clients/readabroad.png",
         bgColor: "#3498db",
         textColor: "#ffffff"
     },
@@ -117,8 +117,17 @@ const clientsData: ClientCard[] = [
         name: "Writing Rodgers",
         industry: "Education",
         description: "Empowering writers and educators with comprehensive digital tools and content strategies.",
-        image: "/clients/education_writingrodgers.png",
+        image: "/clients/writingrodgers.png",
         bgColor: "#16a085",
+        textColor: "#ffffff"
+    },
+    {
+        id: 13,
+        name: "Local Ride",
+        industry: "Transportation - Canada",
+        description: "Engineered from the ground up into a thriving Canadian rideshare powerhouse. Full-stack iOS/Android apps with zero commission for drivers.",
+        image: "/clients/localride.png",
+        bgColor: "#0ea5e9",
         textColor: "#ffffff"
     }
 ];
@@ -143,7 +152,19 @@ export function ClientsScrollStack() {
     }, []);
 
     const updateCardTransforms = useCallback(() => {
+        // Skip animation on mobile or if not ready
         if (typeof window === 'undefined' || !cardsRef.current.length || isUpdatingRef.current) return;
+
+        // Simple check for mobile/tablet - if width < 768px, reset transforms and stop
+        if (window.innerWidth < 768) {
+            cardsRef.current.forEach(card => {
+                if (card) {
+                    card.style.transform = 'none';
+                    card.style.transition = 'none';
+                }
+            });
+            return;
+        }
 
         isUpdatingRef.current = true;
 
@@ -183,19 +204,19 @@ export function ClientsScrollStack() {
 
             const newTransform = {
                 translateY: Math.round(translateY * 100) / 100,
-                scale: Math.round(scale * 10000) / 10000, // More precision for smoother scaling
+                scale: Math.round(scale * 10000) / 10000,
             };
 
             const lastTransform = lastTransformsRef.current.get(i);
             const hasChanged =
                 !lastTransform ||
-                Math.abs(lastTransform.translateY - newTransform.translateY) > 0.5 || // Increased threshold
-                Math.abs(lastTransform.scale - newTransform.scale) > 0.0001; // Smaller threshold for scale
+                Math.abs(lastTransform.translateY - newTransform.translateY) > 0.5 ||
+                Math.abs(lastTransform.scale - newTransform.scale) > 0.0001;
 
             if (hasChanged) {
                 const transform = `translate3d(0, ${newTransform.translateY}px, 0) scale(${newTransform.scale})`;
                 card.style.transform = transform;
-                card.style.transition = 'transform 0.05s ease-out'; // Add smooth transition
+                card.style.transition = 'transform 0.05s ease-out';
                 lastTransformsRef.current.set(i, newTransform);
             }
         });
@@ -213,23 +234,41 @@ export function ClientsScrollStack() {
         const cards = Array.from(document.querySelectorAll('.client-stack-card')) as HTMLDivElement[];
         cardsRef.current = cards;
 
+        // Verify if mobile based on width
+        const isMobile = window.innerWidth < 768;
+
         cards.forEach((card, i) => {
-            if (i < cards.length - 1) {
+            // Apply stack spacing only on DESKTOP
+            if (!isMobile && i < cards.length - 1) {
                 card.style.marginBottom = '100px';
+            } else {
+                // Normal spacing on mobile
+                card.style.marginBottom = '32px';
             }
-            card.style.willChange = 'transform';
-            card.style.transformOrigin = 'top center';
-            card.style.backfaceVisibility = 'hidden';
-            card.style.transform = 'translateZ(0)';
-            card.style.webkitBackfaceVisibility = 'hidden';
-            card.style.perspective = '1000px';
+
+            if (!isMobile) {
+                card.style.willChange = 'transform';
+                card.style.transformOrigin = 'top center';
+                card.style.backfaceVisibility = 'hidden';
+                card.style.transform = 'translateZ(0)';
+                card.style.webkitBackfaceVisibility = 'hidden';
+                card.style.perspective = '1000px';
+            } else {
+                // Reset styles for mobile
+                card.style.removeProperty('will-change');
+                card.style.removeProperty('transform-origin');
+                card.style.removeProperty('backface-visibility');
+                card.style.transform = 'none';
+            }
         });
 
         window.addEventListener('scroll', handleScroll, { passive: true });
+        window.addEventListener('resize', updateCardTransforms); // Add resize listener to handle orientation changes
         updateCardTransforms();
 
         return () => {
             window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('resize', updateCardTransforms);
             lastTransformsRef.current.clear();
             isUpdatingRef.current = false;
         };

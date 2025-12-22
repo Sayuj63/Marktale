@@ -64,6 +64,7 @@ export default function Home() {
           { label: "Ad Spend", value: "$0", iconName: "CheckCircle2" },
         ]}
         themeColor="#000000"
+        image="/clients/delho059.png"
         link="https://www.delhi059.ca"
         align="left"
         gradientFrom="#000000"
@@ -81,6 +82,7 @@ export default function Home() {
           { label: "Platform", value: "iOS/Android", iconName: "Smartphone" },
         ]}
         themeColor="#0ea5e9"
+        image="/clients/localride.png"
         link="https://localride.co"
         align="right"
         gradientFrom="#0ea5e9"

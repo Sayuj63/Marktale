@@ -9,6 +9,7 @@ interface ServiceData {
     description: string;
     icon: string;
     details: string[];
+    image?: string;
 }
 
 const servicesData: ServiceData[] = [
@@ -17,6 +18,7 @@ const servicesData: ServiceData[] = [
         title: "Startup & Brand Building",
         description: "Turn your idea into a recognized brand with comprehensive strategy and identity design.",
         icon: "🚀",
+        image: "/clients/delho059.png",
         details: [
             "Brand naming & positioning",
             "Logo & identity design",
@@ -30,6 +32,7 @@ const servicesData: ServiceData[] = [
         title: "Website & App Development",
         description: "Custom digital solutions built on robust technologies for web and mobile.",
         icon: "💻",
+        image: "/clients/localride.png",
         details: [
             "WordPress & custom websites",
             "Android & iOS apps (Flutter/React Native)",
@@ -43,6 +46,7 @@ const servicesData: ServiceData[] = [
         title: "Digital Marketing & SEO",
         description: "Data-driven marketing campaigns to increase visibility and organic traffic.",
         icon: "📈",
+        image: "/clients/bgfoods.png",
         details: [
             "SEO (On-page & Off-page)",
             "SMO (Social Media Optimization)",
@@ -56,6 +60,7 @@ const servicesData: ServiceData[] = [
         title: "Sales & Lead Generation",
         description: "Automated systems to capture, nurture, and convert leads into paying customers.",
         icon: "💰",
+        image: "/clients/promac.png",
         details: [
             "CRM setup & automation",
             "Paid ads (Google, Meta, LinkedIn)",
@@ -144,7 +149,18 @@ export function ServicesSection() {
                         onMouseLeave={handleCardLeave}
                         onClick={() => handleCardClick(index)}
                     >
-                        <div className="p-4 md:p-5 h-full flex flex-col items-center justify-center text-center">
+                        {/* Background Image */}
+                        {service.image && (
+                            <div className="absolute inset-0 opacity-10">
+                                <img
+                                    src={service.image}
+                                    alt={service.title}
+                                    className="w-full h-full object-cover"
+                                />
+                            </div>
+                        )}
+
+                        <div className="p-4 md:p-5 h-full flex flex-col items-center justify-center text-center relative z-10">
                             <div className="text-4xl md:text-5xl mb-3 md:mb-4">{service.icon}</div>
                             <h3 className="text-sm md:text-base font-bold text-black mb-2">{service.title}</h3>
                             {expandedCard !== index && (
