@@ -14,6 +14,7 @@ import { initScrollTrigger } from "@/lib/gsap-config";
 import { setupColorInversion } from "@/lib/headerColorInversion";
 import { monitorScrollPerformance } from "@/lib/performance-monitor";
 import { disableAnimationsOnMobile } from "@/lib/detect-device";
+import { Metadata } from "next";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -27,6 +28,29 @@ const poppins = Poppins({
   variable: "--font-poppins",
   display: "swap",
 });
+
+export const metadata: Metadata = {
+  title: {
+    default: "MarkTaleWorld - Powered by Ai",
+    template: "%s | MarkTaleWorld",
+  },
+  description: "Online Internet Marketing Company That Grows Your Brand",
+  keywords: ["Digital Marketing", "AI", "Marketing Agency", "SEO", "Web Development"],
+  openGraph: {
+    title: "MarkTaleWorld - Powered by Ai",
+    description: "Online Internet Marketing Company That Grows Your Brand",
+    url: "https://marktaleworld.com",
+    siteName: "MarkTaleWorld",
+    locale: "en_US",
+    type: "website",
+  },
+  icons: {
+    icon: "/favicon.ico",
+  },
+  verification: {
+    google: "APNS6nHozhiQP3ShefFpxbHPSuvD0Nt-YMr-k2Wu9VE",
+  },
+};
 
 export default function RootLayout({
   children,
@@ -55,13 +79,6 @@ export default function RootLayout({
 
   return (
     <html lang="en" className={`${montserrat.variable} ${poppins.variable}`}>
-      <head>
-        <title>MarkTaleWorld - Powered by Ai</title>
-        <meta
-          name="description"
-          content="Online Internet Marketing Company That Grows Your Brand"
-        />
-      </head>
       <body className={poppins.className}>
         <LoadingAnimation />
         <CustomCursor />
