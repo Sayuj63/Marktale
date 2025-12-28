@@ -10,10 +10,34 @@ export function ContactSection({ title = "Get In Touch", subtitle = "Ready to st
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setStatus("submitting");
-        // Simulate sending
-        await new Promise((resolve) => setTimeout(resolve, 1500));
-        setStatus("success");
-        if (formRef.current) formRef.current.reset();
+
+        const formData = new FormData(e.currentTarget as HTMLFormElement);
+        const data = Object.fromEntries(formData.entries());
+
+        try {
+            const response = await fetch("https://formsubmit.co/ajax/teammarktaleworld@gmail.com", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify({
+                    ...data,
+                    _subject: `New Contact from ${data.name}`,
+                    _template: "table"
+                })
+            });
+
+            if (response.ok) {
+                setStatus("success");
+                if (formRef.current) formRef.current.reset();
+            } else {
+                setStatus("error");
+            }
+        } catch (error) {
+            console.error("Form submission error:", error);
+            setStatus("error");
+        }
     };
 
     return (
@@ -32,6 +56,7 @@ export function ContactSection({ title = "Get In Touch", subtitle = "Ready to st
                                 <input
                                     type="text"
                                     id="name"
+                                    name="name"
                                     required
                                     className="w-full px-5 py-4 bg-white border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#1a8dcc]/20 focus:border-[#1a8dcc] transition-all"
                                     placeholder="Enter your name"
@@ -42,6 +67,7 @@ export function ContactSection({ title = "Get In Touch", subtitle = "Ready to st
                                 <input
                                     type="email"
                                     id="email"
+                                    name="email"
                                     required
                                     className="w-full px-5 py-4 bg-white border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#1a8dcc]/20 focus:border-[#1a8dcc] transition-all"
                                     placeholder="hello@example.com"
@@ -54,6 +80,7 @@ export function ContactSection({ title = "Get In Touch", subtitle = "Ready to st
                             <input
                                 type="text"
                                 id="subject"
+                                name="subject"
                                 required
                                 className="w-full px-5 py-4 bg-white border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#1a8dcc]/20 focus:border-[#1a8dcc] transition-all"
                                 placeholder="Project inquiry"
@@ -64,6 +91,7 @@ export function ContactSection({ title = "Get In Touch", subtitle = "Ready to st
                             <label htmlFor="message" className="text-sm font-semibold text-gray-900 block">Message</label>
                             <textarea
                                 id="message"
+                                name="message"
                                 required
                                 rows={6}
                                 className="w-full px-5 py-4 bg-white border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#1a8dcc]/20 focus:border-[#1a8dcc] transition-all resize-none"

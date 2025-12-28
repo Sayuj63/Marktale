@@ -1,8 +1,43 @@
 "use client";
 
 import { Calendar, Phone } from "lucide-react";
+import { useState } from "react";
 
 export function BookAppointment() {
+    const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setStatus("submitting");
+
+        const formData = new FormData(e.currentTarget as HTMLFormElement);
+        const data = Object.fromEntries(formData.entries());
+
+        try {
+            const response = await fetch("https://formsubmit.co/ajax/teammarktaleworld@gmail.com", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify({
+                    ...data,
+                    _subject: `New Quick Inquiry from ${data.name}`,
+                    _template: "table"
+                })
+            });
+
+            if (response.ok) {
+                setStatus("success");
+                (e.target as HTMLFormElement).reset();
+            } else {
+                setStatus("error");
+            }
+        } catch (error) {
+            console.error("Form submission error:", error);
+            setStatus("error");
+        }
+    };
     return (
         <section className="py-20 bg-white" id="book-appointment">
             <div className="container mx-auto px-4 md:px-8">
@@ -43,24 +78,37 @@ export function BookAppointment() {
                         </div>
                     </div>
 
+// ... imports at top need to change, see below calls ... this tool cannot change imports if they are far away.
+                    // I will rewrite the component part first.
+
                     {/* Right Form Placeholder */}
                     <div className="flex-1 bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
                         <h3 className="text-lg font-bold mb-4">Quick Contact</h3>
-                        <form className="space-y-4">
+                        <form onSubmit={handleSubmit} className="space-y-4">
                             <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
-                                <input type="text" className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:outline-none focus:border-black" placeholder="John Doe" />
+                                <input name="name" type="text" required className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:outline-none focus:border-black" placeholder="John Doe" />
                             </div>
                             <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">Phone</label>
-                                <input type="tel" className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:outline-none focus:border-black" placeholder="+91 99999 99999" />
+                                <input name="phone" type="tel" required className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:outline-none focus:border-black" placeholder="+91 99999 99999" />
                             </div>
                             <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">Message</label>
-                                <textarea className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:outline-none focus:border-black h-24" placeholder="How can we help?" />
+                                <textarea name="message" required className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:outline-none focus:border-black h-24" placeholder="How can we help?" />
                             </div>
-                            <button type="submit" className="w-full bg-[#1a8dcc] text-white py-3 rounded-lg font-bold hover:bg-[#157ab8] transition-colors">
-                                Submit
+                            <button
+                                type="submit"
+                                disabled={status === "submitting" || status === "success"}
+                                className="w-full bg-[#1a8dcc] text-white py-3 rounded-lg font-bold hover:bg-[#157ab8] transition-colors disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center"
+                            >
+                                {status === "submitting" ? (
+                                    <span className="inline-block animate-spin rounded-full h-5 w-5 border-b-2 border-white"></span>
+                                ) : status === "success" ? (
+                                    <span>Sent! ✓</span>
+                                ) : (
+                                    "Submit"
+                                )}
                             </button>
                         </form>
                     </div>
