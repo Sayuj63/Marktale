@@ -1,11 +1,24 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 
 export function Footer() {
+    const [servicesOpen, setServicesOpen] = useState(false);
+
+    const services = [
+        { name: "SEO Services", href: "/seo" },
+        { name: "Google Ads Services", href: "/google-ads-services" },
+        { name: "Content Marketing Agency", href: "/content-marketing-agency" },
+        { name: "Mobile App Development", href: "/mobile-app-development" },
+        { name: "Web Development", href: "/web-development" },
+        { name: "MaaS", href: "/maas" },
+    ];
+
     return (
         <footer className="bg-black text-white py-12 px-4 md:px-8 border-t border-white/10 max-w-[100vw] overflow-hidden">
-            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
                 {/* Brand */}
                 <div>
                     <img
@@ -15,6 +28,30 @@ export function Footer() {
                     />
                     <p className="font-bold text-lg mb-1">MarkTale – Powered by AI</p>
                     <p className="text-sm text-gray-400">A Unit of MarkTale World Private Limited</p>
+                </div>
+
+                {/* Services */}
+                <div>
+                    <button
+                        onClick={() => setServicesOpen(!servicesOpen)}
+                        className="text-lg font-bold mb-4 flex items-center gap-2 hover:text-[#1a8dcc] transition-colors md:cursor-default"
+                    >
+                        Services
+                        <span className="md:hidden">
+                            {servicesOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+                        </span>
+                    </button>
+                    <nav className={`space-y-2 ${servicesOpen ? 'block' : 'hidden'} md:block`}>
+                        {services.map((service) => (
+                            <Link
+                                key={service.href}
+                                href={service.href}
+                                className="block text-sm text-gray-400 hover:text-[#1a8dcc] transition-colors"
+                            >
+                                {service.name}
+                            </Link>
+                        ))}
+                    </nav>
                 </div>
 
                 {/* Contact */}

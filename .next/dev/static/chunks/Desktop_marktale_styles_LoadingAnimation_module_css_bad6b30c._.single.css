@@ -1,0 +1,64 @@
+/* [project]/Desktop/marktale/styles/LoadingAnimation.module.css [app-client] (css) */
+.LoadingAnimation-module__Pt_zlq__overlay {
+  z-index: 9999;
+  pointer-events: none;
+  background-color: #fff;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.LoadingAnimation-module__Pt_zlq__brush {
+  clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+  background-color: #0071ce;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.LoadingAnimation-module__Pt_zlq__textContainer {
+  z-index: 10000;
+  mix-blend-mode: difference;
+  color: #fff;
+  opacity: 0;
+  position: relative;
+  transform: scale(1.2);
+}
+
+.LoadingAnimation-module__Pt_zlq__text {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: -.05em;
+  font-size: clamp(3rem, 10vw, 8rem);
+  font-weight: 800;
+  line-height: 1;
+}
+
+.LoadingAnimation-module__Pt_zlq__ball {
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.LoadingAnimation-module__Pt_zlq__yellowBall {
+  background-color: #66b0e0;
+  left: -100px;
+}
+
+.LoadingAnimation-module__Pt_zlq__blueBall {
+  background-color: #0071ce;
+  left: -100px;
+}
+
+/*# sourceMappingURL=Desktop_marktale_styles_LoadingAnimation_module_css_bad6b30c._.single.css.map*/
